@@ -26,11 +26,9 @@ function BlogUploadTask.processRenderedPhotos(functionContext, exportContext)
                   }, pathOrMessage)
 
                 LrFileUtils.delete( pathOrMessage )
-
-                progressScope:done()
-
-                LrHttp.openUrlInBrowser(workUrl)
             end
         end
     end
+
+    progressScope:done()
 end

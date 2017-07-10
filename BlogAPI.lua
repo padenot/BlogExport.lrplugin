@@ -3,7 +3,7 @@ local LrErrors = import'LrErrors'
 local LrPathUtils = import'LrPathUtils'
 local LrDate = import'LrDate'
 
-local API_URL = 'http://localhost:3000/api/v1/articles'
+local API_URL = 'https://p.paul.cx/api/v1/articles'
 
 local logger = import'LrLogger'('BlogAPI')
 logger:enable("logfile")
