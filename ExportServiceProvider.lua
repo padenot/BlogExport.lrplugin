@@ -10,6 +10,12 @@ return {
     hidePrintResolution = true,
     canExportVideo = false,
 
+    exportPresetFields = {
+      { key = 'url', default = "http://localhost:3000/api/v1/articles/"},
+      { key = "password", default = "plop"},
+    },
+
     startDialog = ExportDialogs.startDialog,
+    sectionsForBottomOfDialog = ExportDialogs.sectionsForBottomOfDialog,
     processRenderedPhotos = BlogUploadTask.processRenderedPhotos,
 }

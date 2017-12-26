@@ -10,7 +10,7 @@ logger:enable("logfile")
 
 BlogAPI = {}
 
-function BlogAPI.uploadWork(metadata, photoFilePath)
+function BlogAPI.uploadWork(metadata, photoFilePath, url, password)
 
     local mimeChunks = {}
 
@@ -21,10 +21,10 @@ function BlogAPI.uploadWork(metadata, photoFilePath)
 
     local fileName = LrPathUtils.leafName(photoFilePath)
     mimeChunks[#mimeChunks + 1] = { name = 'photo', fileName = fileName, filePath = photoFilePath, contentType = 'image/jpeg' }
-    mimeChunks[#mimeChunks + 1] = { name = 'passwd', value = 'plop'}
+    mimeChunks[#mimeChunks + 1] = { name = 'passwd', value = password}
 
-    logger:info('Posting photo ', fileName, 'with ', photoFilePath, 'to', API_URL)
-    local result, headers = LrHttp.postMultipart(API_URL, mimeChunks)
+    logger:info('Posting photo ', fileName, 'with ', photoFilePath, 'to', url)
+    local result, headers = LrHttp.postMultipart(url, mimeChunks)
 
     if not result then
         if headers and headers.error then

@@ -4,9 +4,18 @@ local LrFileUtils = import'LrFileUtils'
 
 require'BlogAPI'
 
+local logger = import'LrLogger'('BlogAPI')
+
 BlogUploadTask = {}
 
 function BlogUploadTask.processRenderedPhotos(functionContext, exportContext)
+
+    local exportSession = exportContext.exportSession
+    local exportParams = exportContext.propertyTable
+    local url = exportParams.url
+    local password = exportParams.password
+
+    logger:info("url: ", url, " pass: ", password)
 
     local progressScope = exportContext:configureProgress{
         title = "Uploading work to the blog"
@@ -22,8 +31,8 @@ function BlogUploadTask.processRenderedPhotos(functionContext, exportContext)
                 workUrl = BlogAPI.uploadWork({
                     title = photo:getPropertyForPlugin(_PLUGIN, "title"),
                     text = photo:getPropertyForPlugin(_PLUGIN, "text"),
-                    publish_date = photo:getPropertyForPlugin(_PLUGIN, "publishdate")
-                  }, pathOrMessage)
+                    publish_date = photo:getPropertyForPlugin(_PLUGIN, "publishdate"),
+                  }, pathOrMessage, url, password)
 
                 LrFileUtils.delete( pathOrMessage )
             end
