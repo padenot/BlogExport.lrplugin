@@ -1,6 +1,5 @@
 local LrHttp = import'LrHttp'
 local LrFileUtils = import'LrFileUtils'
-local LrFileUtils = import'LrFileUtils'
 
 require'BlogAPI'
 

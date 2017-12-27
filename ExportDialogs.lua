@@ -1,14 +1,30 @@
 local LrView = import 'LrView'
 local bind = LrView.bind
+local prefs = import 'LrPrefs'
+local logger = import'LrLogger'('BlogAPI')
 
 
 ExportDialogs = {}
 
 local function updateProperties(propertyTable)
+  local preferences = prefs.prefsForPlugin()
+
+  if propertyTable.url ~= nil then
+    preferences.url = propertyTable.url
+  end
+  if propertyTable.password ~= nil then
+    preferences.password = propertyTable.password
+  end
 end
 
 function ExportDialogs.startDialog(propertyTable)
+  local preferences = prefs.prefsForPlugin()
+
+  propertyTable.url = preferences.url
+  propertyTable.password = preferences.password
+
   propertyTable:addObserver('url', updateProperties)
+  propertyTable:addObserver('password', updateProperties)
 end
 
 function ExportDialogs.workDetailsDialog(ui, propertyTable)
@@ -17,7 +33,6 @@ function ExportDialogs.workDetailsDialog(ui, propertyTable)
 end
 
 function ExportDialogs.sectionsForBottomOfDialog( _, propertyTable )
-
   local f = LrView.osFactory()
   local bind = LrView.bind
   local share = LrView.share
