@@ -11,6 +11,11 @@ return {
       dataType = 'string',
     },
     {
+      id = 'hashtags',
+      title = "Hashtags",
+      dataType = 'string',
+    },
+    {
       id = 'publishdate',
       title = "Publish Date",
       dataType = 'string',

@@ -30,6 +30,7 @@ function BlogUploadTask.processRenderedPhotos(functionContext, exportContext)
                 workUrl = BlogAPI.uploadWork({
                     title = photo:getPropertyForPlugin(_PLUGIN, "title"),
                     text = photo:getPropertyForPlugin(_PLUGIN, "text"),
+                    hashtags = photo:getPropertyForPlugin(_PLUGIN, "hashtags"),
                     publish_date = photo:getPropertyForPlugin(_PLUGIN, "publishdate"),
                   }, pathOrMessage, url, password)
 

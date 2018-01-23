@@ -6,6 +6,7 @@ return {
     LrPluginName = "Blog Uploader",
 
     LrMetadataProvider = 'blogmetadataprovider.lua',
+    LrMetadataTagsetFactory = 'tagset.lua',
 
     LrExportServiceProvider = {
         title = "Blog Upload",
@@ -13,7 +14,4 @@ return {
     },
 
     VERSION = { major = 0, minor = 0, revision = 0, build = 1, },
-
 }
-
-
